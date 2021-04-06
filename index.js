@@ -27,10 +27,63 @@ const filter = function (field, operator, value) {
 
 
     /* YOUR CODE HERE */
-
-
-
-
+    var outputItems = [];
+    if (operator == EQUAL) { // Tomo el operador como punto de partida para cada uno de los casos
+            if (field == 'id') {
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].id == value) {
+                        outputItems.push(items[i])
+                    }
+                }
+                return outputItems;
+        } else if 
+            (field == 'product') { // Voy yendo uno por uno por los posibles valores que puede tener "field"
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].product == value) {
+                        outputItems.push(items[i])
+                    }
+                }
+                return outputItems;
+        } else if
+            (field == 'price') { // "" 
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].price == value) {
+                        outputItems.push(items[i])
+                    }
+                }
+                return outputItems;
+        } else if 
+            (field == 'inStock') { // ""
+                for (var i = 0; i < items.length; i++) {
+                    if (items[i].inStock == value) {
+                        outputItems.push(items[i])
+                    }
+                }
+                return outputItems;
+        }
+    } else if (operator == CONTAINS) { // Nuevamente tomo el operador como punto de partida, en este caso la opción "CONTAINS"
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].product.search(value) !== -1) {
+                outputItems.push(items[i])
+            }
+        }
+        return outputItems;
+    } else if (operator == GREATER_THAN) { // ""
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].price > value) {
+                outputItems.push(items[i]);
+            }
+        }
+        return outputItems;
+    } else if (operator == LESS_THAN) {// ""
+        for (var i = 0; i < items.length; i++) {
+            if (items[i].price < value) {
+                outputItems.push(items[i]);
+            }
+        }
+        return outputItems;
+    }
+    
 }
 
 module.exports = filter
